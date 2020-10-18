@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +20,7 @@ namespace BilingualBlazor
         }
 
         public IConfiguration Configuration { get; }
-        private static string currentCulture = "en";
+        private static string _currentCulture = "en";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -49,17 +46,10 @@ namespace BilingualBlazor
 
                     if (segments.Length > 1 && segments[0].Length == 2)
                     {
-                        if (segments[0].Equals("en", StringComparison.OrdinalIgnoreCase))
-                        {
-                            currentCulture = "en";
-                        }
-                        else
-                        {
-                            currentCulture = "fr";
-                        }
+                        _currentCulture = segments[0].Equals("en", StringComparison.OrdinalIgnoreCase) ? "en" : "fr";
                     }
 
-                    var requestCulture = new ProviderCultureResult(currentCulture, currentCulture);
+                    var requestCulture = new ProviderCultureResult(_currentCulture, _currentCulture);
 
                     return await Task.FromResult(requestCulture);
                 }));
