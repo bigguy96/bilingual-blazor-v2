@@ -71,10 +71,9 @@ namespace BilingualBlazor
             }
 
             app.UseHttpsRedirection();
+            app.UseRequestLocalization();
             app.UseStaticFiles();
-
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
