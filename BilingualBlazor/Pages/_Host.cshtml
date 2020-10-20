@@ -1,6 +1,11 @@
 ﻿@page "/"
 @namespace BilingualBlazor.Pages
+@using System.Reflection
+@using BilingualBlazor.Utils
 @using Microsoft.AspNetCore.Localization
+@using RouteAttribute = Microsoft.AspNetCore.Components.RouteAttribute
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.Routing
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     var requestCultureFeature = Request.HttpContext.Features.Get<IRequestCultureFeature>();
@@ -8,9 +13,31 @@
     //var toggle = twoLetterRequestCulture.Equals("en", StringComparison.CurrentCultureIgnoreCase) ? "Français" : "English";
     //var toggle = "English";
     //var twoLetterRequestCulture = "en";
+    var path = HttpContext.Request.Path;
+    RouteHelper.GetAlternate(path, twoLetterRequestCulture);
 
+    // Get all the components whose base class is ComponentBase
+    //var components = Assembly.GetExecutingAssembly().ExportedTypes.Where(t => t.IsSubclassOf(typeof(ComponentBase))).ToList();
+
+    //var routables = components.Where(c => c.GetCustomAttributes(inherit: true).OfType<RouteAttribute>().ToArray().Any());
+
+    //var pageTypeList = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.GetCustomAttribute(typeof(RouteAttribute)) != null);
+
+    //var routeAttributes = Assembly.GetExecutingAssembly().ExportedTypes
+    //    .Where(t => t.IsSubclassOf(typeof(ComponentBase)));
+    //    .Where(x => x.Name.Length > 1)
+    //    .Select(s => new { RouteAttributes = s.GetCustomAttributes(inherit: true).OfType<RouteAttribute>() });
+
+    ////get route values for the current page and get the alternate language.
+    //var alternateRoute = routeAttributes
+    //    .SingleOrDefault(x => x.RouteAttributes.Any(a => a.Template.Contains(path)))?.RouteAttributes
+    //    .SingleOrDefault(s => s.Template.Contains(twoLetterRequestCulture))?.Template;
+
+    //https://github.com/tc-ca/DSD-Marine-Blazor-Components/blob/master/DemoWebsites/BlazorComponentDemoTestSite/DSD.MSS.Blazor.Components.DemoSite/Pages/BasePage.razor.cs
     //https://stackoverflow.com/questions/59197729/dynamic-hosts-cshtml-file-in-blazor-with-c-sharp-code
     //https://github.com/dotnet/aspnetcore/issues/16009
+    //https://stackoverflow.com/questions/60161726/find-the-blazor-component-class-corresponding-to-a-given-path
+    //https://stackoverflow.com/questions/62674998/in-blazor-how-to-retrieve-all-routable-razor-component-names-in-pages-directory
 }
 
 <!DOCTYPE html>
@@ -83,11 +110,11 @@
         });
     </script>
     <!-- Write closure template -->
-<script>
-    document.write(wet.builder.refFooter({
-        "isApplication": true
-    }));
-</script>
-<script src="_framework/blazor.server.js"></script>
+    <script>
+        document.write(wet.builder.refFooter({
+            "isApplication": true
+        }));
+    </script>
+    <script src="_framework/blazor.server.js"></script>
 </body>
 </html>
