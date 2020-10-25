@@ -1,10 +1,14 @@
-﻿@page "/en/user"
+﻿@*@page "/en/user"*@
 @page "/en/user/{Name}"
-@page "/fr/usager"
+@*@page "/fr/usager"*@
 @page "/fr/usager/{Name}"
 @inherits BasePageComponent
 
 <h3>User</h3>
+@if (!string.IsNullOrEmpty(Name))
+{
+    <p>@Name</p>
+}
 
 @code {
     [Parameter]
@@ -12,4 +16,4 @@
 }
 
 @*https://blazor-tutorial.net/knowledge-base/50102726/get-current-url-in-a-blazor-component*@
-https://www.c-sharpcorner.com/article/routing-in-blazor/
+@*https://www.c-sharpcorner.com/article/routing-in-blazor/*@
