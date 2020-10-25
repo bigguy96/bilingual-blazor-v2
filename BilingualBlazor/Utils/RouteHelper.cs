@@ -7,7 +7,7 @@ namespace BilingualBlazor.Utils
 {
     public static class RouteHelper
     {
-        public static string GetAlternate(string path, string twoLetterRequestCulture)
+        public static string GetAlternatePath(string path, string twoLetterRequestCulture)
         {
             if (path.Equals("/")) return path;
 

@@ -10,7 +10,7 @@
     var alternateTwoLetterRequestCulture = twoLetterRequestCulture.Equals("en", StringComparison.CurrentCultureIgnoreCase) ? "fr" : "en"; ;
     var path = HttpContext.Request.Path;
     var queryString = HttpContext.Request.QueryString.HasValue ? HttpContext.Request.QueryString.Value : "";
-    var alternate = RouteHelper.GetAlternate(path, twoLetterRequestCulture) + queryString;
+    var alternate = RouteHelper.GetAlternatePath(path, twoLetterRequestCulture) + queryString;
 
     //https://github.com/tc-ca/DSD-Marine-Blazor-Components/blob/master/DemoWebsites/BlazorComponentDemoTestSite/DSD.MSS.Blazor.Components.DemoSite/Pages/BasePage.razor.cs
     //https://stackoverflow.com/questions/59197729/dynamic-hosts-cshtml-file-in-blazor-with-c-sharp-code
