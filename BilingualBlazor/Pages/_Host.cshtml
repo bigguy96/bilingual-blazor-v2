@@ -7,10 +7,10 @@
     var requestCultureFeature = Request.HttpContext.Features.Get<IRequestCultureFeature>();
     var twoLetterRequestCulture = requestCultureFeature.RequestCulture.UICulture.TwoLetterISOLanguageName;
     var toggle = twoLetterRequestCulture.Equals("en", StringComparison.CurrentCultureIgnoreCase) ? "Français" : "English";
-    //var toggle = "English";
     var alternateTwoLetterRequestCulture = twoLetterRequestCulture.Equals("en", StringComparison.CurrentCultureIgnoreCase) ? "fr" : "en"; ;
     var path = HttpContext.Request.Path;
-    var alternate = RouteHelper.GetAlternate(path, twoLetterRequestCulture);
+    var queryString = HttpContext.Request.QueryString.HasValue ? HttpContext.Request.QueryString.Value : "";
+    var alternate = RouteHelper.GetAlternate(path, twoLetterRequestCulture) + queryString;
 
     //https://github.com/tc-ca/DSD-Marine-Blazor-Components/blob/master/DemoWebsites/BlazorComponentDemoTestSite/DSD.MSS.Blazor.Components.DemoSite/Pages/BasePage.razor.cs
     //https://stackoverflow.com/questions/59197729/dynamic-hosts-cshtml-file-in-blazor-with-c-sharp-code
@@ -56,8 +56,7 @@
         var defTop = document.getElementById("def-top");
         defTop.outerHTML = wet.builder.appTop({
             "appName": [{ "text": "Application name", "href": "#" }],
-            "lngLinks": [{ "lang": "@alternateTwoLetterRequestCulture", "href": "@alternate", "text": "@toggle" }],
-            "menuPath": "https://ssl-templates.services.gc.ca/app/cls/WET/gcweb/v4_0_28/cdts/ajax/appmenu-en.html"
+            "lngLinks": [{ "lang": "@alternateTwoLetterRequestCulture", "href": "@alternate", "text": "@toggle" }]
         });
     </script>
     <main role="main" property="mainContentOfPage" class="container">
@@ -65,10 +64,10 @@
             <component type="typeof(App)" render-mode="ServerPrerendered" />
         </app>
 
-        <p>@twoLetterRequestCulture</p>
-        <p>@alternateTwoLetterRequestCulture</p>
-        <p>@alternate</p>
-        <p>@toggle</p>
+        <p>two letter culture: @twoLetterRequestCulture</p>
+        <p>alternate two letter culture: @alternateTwoLetterRequestCulture</p>
+        <p>alternate link: @alternate</p>
+        <p>toggle text: @toggle</p>
 
         <div id="def-preFooter">
             <!-- Write closure fall-back static file -->
