@@ -1,2 +1,4 @@
-# bilingual-blazor-v2
-Trying to figure out a different way to make a bilingual page.
+# Bilingual Blazor Version 2.0
+Second attempt at making at Blazor application work with CDTS template.
+
+So far, it looks promising. More testing of various scenarios is required.
