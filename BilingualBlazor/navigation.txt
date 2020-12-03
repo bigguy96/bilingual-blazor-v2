@@ -1,0 +1,5 @@
+﻿https://stackoverflow.com/questions/59330322/blazor-possible-to-navigateto-in-code-behind
+https://www.c-sharpcorner.com/article/routing-in-blazor/
+https://www.mikesdotnetting.com/article/346/using-resource-files-in-razor-pages-localisation
+https://www.c-sharpcorner.com/article/localization-in-blazor-server/
+

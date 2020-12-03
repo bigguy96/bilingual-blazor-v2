@@ -1,11 +1,15 @@
 ﻿@page "/en/user/{Name}"
 @page "/fr/usager/{Name}"
+
 @inherits BasePageComponent
 
-<h3>User</h3>
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<User> Localizer
+
+<h1>@Localizer["Title"]</h1>
 @if (!string.IsNullOrEmpty(Name))
 {
-    <p>@Name</p>
+    <p>User Name: @Name</p>
 }
 
 @code {

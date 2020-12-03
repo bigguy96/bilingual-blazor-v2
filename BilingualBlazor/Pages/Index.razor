@@ -1,6 +1,11 @@
 ﻿@page "/en"
 @page "/fr"
 
-<h1>Hello, world!</h1>
+@inherits BasePageComponent
 
-Welcome to your new app.
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer<Index> Localizer
+
+<h1>@Localizer["Hello"]</h1>
+
+<p><a href="@Localizer["Test"]">User page</a></p>

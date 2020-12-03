@@ -29,20 +29,20 @@ namespace BilingualBlazor
             services.AddServerSideBlazor();
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                var supportedCultures = new List<CultureInfo>()
+                var supportedUiCultures = new List<CultureInfo>()
                 {
                     new CultureInfo("en"),
                     new CultureInfo("fr")
                 };
                 options.DefaultRequestCulture = new RequestCulture("en");
-                options.SupportedCultures = supportedCultures;
-                options.SupportedUICultures = supportedCultures;
+                options.SupportedCultures = supportedUiCultures;
+                options.SupportedUICultures = supportedUiCultures;
 
                 options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async context =>
                 {
                     var segments = context.Request.Path.Value.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    if (segments.Length > 1 && segments[0].Length == 2)
+                    if (segments.Length >= 1 && segments[0].Length == 2)
                     {
                         _currentCulture = segments[0].Equals("en", StringComparison.OrdinalIgnoreCase) ? "en" : "fr";
                     }
@@ -51,6 +51,14 @@ namespace BilingualBlazor
 
                     return await Task.FromResult(requestCulture);
                 }));
+            });
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+            var supportedCultures = new List<CultureInfo> { new CultureInfo("en"), new CultureInfo("fr") };
+            services.Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedUICultures = supportedCultures;
             });
         }
 
