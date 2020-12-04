@@ -35,7 +35,7 @@
     <!-- Meta data-->
     <!-- Load closure template scripts -->
     <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/soyutils.js"></script>
-    <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/wet-en.js"></script>
+    <script src=@($"https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/wet-{twoLetterRequestCulture}.js")></script>
     <noscript>
         <!-- Write closure fall-back static file -->
         <!-- /ROOT/app/cls/WET/gcweb/v4_0_28/cdts/static/refTop.html -->
@@ -46,6 +46,7 @@
             "isApplication": true
         }));
     </script>
+    <base href="~/" />
 </head>
 <body vocab="https://schema.org/" typeof="WebPage">
     <div id="def-top">
@@ -56,15 +57,27 @@
     <script>
         var defTop = document.getElementById("def-top");
         defTop.outerHTML = wet.builder.appTop({
-            "appName": [{ "text": "Application name", "href": "/@twoLetterRequestCulture" }],
-            "lngLinks": [{ "lang": "@alternateTwoLetterRequestCulture", "href": "@alternate", "text": "@toggle" }]
+            "appName": [{ "text": "Application name", "href": "/@twoLetterRequestCulture/" }],
+            "lngLinks": [{ "lang": "@alternateTwoLetterRequestCulture", "href": "@alternate", "text": "@toggle" }],
+            "menuLinks": [{
+                "href": "#",
+                "text": "Link 1"
+            },
+            {
+                "href": "#",
+                "text": "Link 2"
+            },
+            {
+               "href": "#",
+               "text": "Link 3"
+            }]
         });
     </script>
     <main role="main" property="mainContentOfPage" class="container">
         <app>
             <component type="typeof(App)" render-mode="ServerPrerendered" />
         </app>
-        
+
         <div class="alert alert-info">
             <h2>Debug Information</h2>
             <p>two letter culture: @twoLetterRequestCulture</p>
@@ -81,7 +94,10 @@
         <script>
             var defPreFooter = document.getElementById("def-preFooter");
             defPreFooter.outerHTML = wet.builder.preFooter({
-                "dateModified": "2019-03-08"
+                "dateModified": "2020-12-08",
+                "showPostContent": false,
+                "showFeedback": false,
+                "showShare": false
             });
         </script>
     </main>
@@ -101,6 +117,14 @@
         document.write(wet.builder.refFooter({
             "isApplication": true
         }));
+    </script>
+    <script>
+        (() => {
+            const toggle = document.querySelector('#wb-lng ul li a');
+            toggle.addEventListener('click', () => {
+                window.location = toggle.getAttribute('href');
+            });
+        })();
     </script>
     <script src="_framework/blazor.server.js"></script>
 </body>
