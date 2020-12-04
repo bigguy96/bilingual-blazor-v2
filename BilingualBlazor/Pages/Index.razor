@@ -6,6 +6,16 @@
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<Index> Localizer
 
+@inject NavigationManager NavigationManager
+
 <h1>@Localizer["Hello"]</h1>
 
-<p><a href="@Localizer["Test"]">User page</a></p>
+<p><button class="btn btn-primary" @onclick="NavigateToCounterComponent">User page</button></p>
+
+@code
+{
+    private void NavigateToCounterComponent()
+    {
+        NavigationManager.NavigateTo(Localizer["Test"], forceLoad:true);
+    }
+}
