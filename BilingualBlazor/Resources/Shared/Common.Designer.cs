@@ -61,11 +61,20 @@ namespace BilingualBlazor.Resources.Shared {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to /en.
+        ///   Looks up a localized string similar to /en/.
         /// </summary>
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blazor English.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

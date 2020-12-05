@@ -1,7 +1,12 @@
 ﻿@page "/"
 @namespace BilingualBlazor.Pages
+
+@using BilingualBlazor.Shared
 @using BilingualBlazor.Utils
 @using Microsoft.AspNetCore.Localization
+@using Microsoft.Extensions.Localization
+
+@inject IStringLocalizer<Common> Localizer
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -56,8 +61,8 @@
     <!-- Write closure template -->
     <script>
         var defTop = document.getElementById("def-top");
-        defTop.outerHTML = wet.builder.appTop({
-            "appName": [{ "text": "Application name", "href": "/@twoLetterRequestCulture/" }],
+        defTop.outerHTML = wet.builder.top({
+            "appName": [{ "text": "@Localizer["Title"]", "href": "/@twoLetterRequestCulture/" }],
             "lngLinks": [{ "lang": "@alternateTwoLetterRequestCulture", "href": "@alternate", "text": "@toggle" }],
             "menuLinks": [{
                 "href": "#",
@@ -79,6 +84,8 @@
         </app>
 
         <div class="alert alert-info">
+            <h2>@Localizer["Title"]</h2>
+            <hr/>
             <h2>Debug Information</h2>
             <p>two letter culture: @twoLetterRequestCulture</p>
             <p>alternate two letter culture: @alternateTwoLetterRequestCulture</p>
@@ -108,7 +115,7 @@
     <!-- Write closure template -->
     <script>
         var defFooter = document.getElementById("def-footer");
-        defFooter.outerHTML = wet.builder.appFooter({
+        defFooter.outerHTML = wet.builder.footer({
             "showFeatures": false
         });
     </script>
