@@ -11,11 +11,23 @@
 <h1>@Localizer["Hello"]</h1>
 
 <p><button class="btn btn-primary" @onclick="NavigateToCounterComponent">User page</button></p>
+<p><button class="btn btn-primary" @onclick="NavigateToRequestComponent">Request page</button></p>
+<p><button class="btn btn-primary" @onclick="NavigateToDownloadComponent">Download page</button></p>
 
 @code
 {
     private void NavigateToCounterComponent()
     {
-        NavigationManager.NavigateTo(Localizer["Test"], forceLoad:true);
+        NavigationManager.NavigateTo(Localizer["User"], forceLoad:true);
+    }
+
+    private void NavigateToRequestComponent()
+    {
+        NavigationManager.NavigateTo(Localizer["Request"], forceLoad: true);
+    }
+
+    private void NavigateToDownloadComponent()
+    {
+        NavigationManager.NavigateTo(Localizer["Download"], forceLoad: true);
     }
 }

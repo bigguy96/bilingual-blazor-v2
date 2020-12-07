@@ -117,10 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Download" xml:space="preserve">
+    <value>/en/download</value>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>Hello World</value>
   </data>
-  <data name="Test" xml:space="preserve">
+  <data name="Request" xml:space="preserve">
+    <value>/en/request</value>
+  </data>
+  <data name="User" xml:space="preserve">
     <value>/en/user/test</value>
   </data>
 </root>

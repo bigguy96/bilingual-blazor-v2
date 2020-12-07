@@ -61,6 +61,15 @@ namespace BilingualBlazor.Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /en/download.
+        /// </summary>
+        public static string Download {
+            get {
+                return ResourceManager.GetString("Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello World.
         /// </summary>
         public static string Hello {
@@ -70,11 +79,20 @@ namespace BilingualBlazor.Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /en/request.
+        /// </summary>
+        public static string Request {
+            get {
+                return ResourceManager.GetString("Request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /en/user/test.
         /// </summary>
-        public static string Test {
+        public static string User {
             get {
-                return ResourceManager.GetString("Test", resourceCulture);
+                return ResourceManager.GetString("User", resourceCulture);
             }
         }
     }
