@@ -3,3 +3,6 @@ https://www.c-sharpcorner.com/article/routing-in-blazor/
 https://www.mikesdotnetting.com/article/346/using-resource-files-in-razor-pages-localisation
 https://www.c-sharpcorner.com/article/localization-in-blazor-server/
 
+GIT
+https://stackoverflow.com/questions/1628563/move-the-most-recent-commits-to-a-new-branch-with-git
+https://medium.com/coder-nomad/how-to-reset-your-git-branch-to-a-previous-commit-both-local-and-remote-55e0351dca2b
