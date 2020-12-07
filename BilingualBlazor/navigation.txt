@@ -6,3 +6,5 @@ https://www.c-sharpcorner.com/article/localization-in-blazor-server/
 GIT
 https://stackoverflow.com/questions/1628563/move-the-most-recent-commits-to-a-new-branch-with-git
 https://medium.com/coder-nomad/how-to-reset-your-git-branch-to-a-previous-commit-both-local-and-remote-55e0351dca2b
+https://stackoverflow.com/questions/46175462/vs-code-git-push-is-not-pushing-the-code-to-remote
+https://stackoverflow.com/questions/43378060/meaning-of-the-github-message-push-declined-due-to-email-privacy-restrictions
