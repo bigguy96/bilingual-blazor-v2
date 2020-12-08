@@ -19,7 +19,6 @@ namespace BilingualBlazor
         }
 
         public IConfiguration Configuration { get; }
-        private static string _currentCulture = "en";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -41,13 +40,14 @@ namespace BilingualBlazor
                 options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async context =>
                 {
                     var segments = context.Request.Path.Value.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                    var currentCulture = "en";
 
                     if (segments.Length >= 1 && segments[0].Length == 2)
                     {
-                        _currentCulture = segments[0].Equals("en", StringComparison.OrdinalIgnoreCase) ? "en" : "fr";
+                        currentCulture = segments[0].Equals("en", StringComparison.OrdinalIgnoreCase) ? "en" : "fr";
                     }
 
-                    var requestCulture = new ProviderCultureResult(_currentCulture, _currentCulture);
+                    var requestCulture = new ProviderCultureResult(currentCulture, currentCulture);
 
                     return await Task.FromResult(requestCulture);
                 }));
@@ -63,7 +63,7 @@ namespace BilingualBlazor
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-            public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
