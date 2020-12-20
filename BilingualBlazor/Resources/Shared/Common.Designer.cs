@@ -61,6 +61,15 @@ namespace BilingualBlazor.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is a sample application..
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to /en/.
         /// </summary>
         public static string Home {

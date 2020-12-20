@@ -1,11 +1,10 @@
 ﻿@page "/en/request"
 @page "/fr/demande"
 
-@using Microsoft.Extensions.Localization
 @inherits BasePageComponent
-
 @inject IStringLocalizer<Request> Localizer
 
+<PageTitle Value="@Localizer["Title"]" />
 <h1>@Localizer["Title"]</h1>
 
 @code {

@@ -17,26 +17,20 @@
     var path = HttpContext.Request.Path;
     var queryString = HttpContext.Request.QueryString.HasValue ? HttpContext.Request.QueryString.Value : "";
     var alternate = RouteHelper.GetAlternatePath(path, twoLetterRequestCulture) + queryString;
-
-    //https://github.com/tc-ca/DSD-Marine-Blazor-Components/blob/master/DemoWebsites/BlazorComponentDemoTestSite/DSD.MSS.Blazor.Components.DemoSite/Pages/BasePage.razor.cs
-    //https://stackoverflow.com/questions/59197729/dynamic-hosts-cshtml-file-in-blazor-with-c-sharp-code
-    //https://github.com/dotnet/aspnetcore/issues/16009
-    //https://stackoverflow.com/questions/60161726/find-the-blazor-component-class-corresponding-to-a-given-path
-    //https://stackoverflow.com/questions/62674998/in-blazor-how-to-retrieve-all-routable-razor-component-names-in-pages-directory
 }
 
 <!DOCTYPE html>
-<!--[if lt IE 9]><html class="no-js lt-ie9" lang="en" dir="ltr"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="@twoLetterRequestCulture" dir="ltr"><![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="@twoLetterRequestCulture" dir="ltr">
 <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-    <title>Content page - Centrally Deployed Templates Solution (CDTS)</title>
+    <title>Content page</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <!-- Meta data -->
-    <meta name="description" content="Web Experience Toolkit (WET) includes reusable components for building and maintaining innovative Web sites that are accessible, usable, and interoperable. These reusable components are open source software and free for use by departments and external Web communities">
+    <meta name="description" content="@Localizer["Description"]">
     <!-- Meta data-->
     <!-- Load closure template scripts -->
     <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/soyutils.js"></script>
@@ -75,6 +69,15 @@
             {
                "href": "#",
                "text": "Link 3"
+            }],
+            "breadcrumbs": [{
+                "title": "Home",
+                "href": "https://www.canada.ca/en/index.html"
+            },
+            {
+                "title": "CDTS",
+                "acronym": "Centrally Deployed Templates Solution",
+                "href": "https://www.canada.ca/en/index.html"
             }]
         });
     </script>
@@ -85,7 +88,7 @@
 
         <div class="alert alert-info">
             <h2>@Localizer["Title"]</h2>
-            <hr/>
+            <hr />
             <h2>Debug Information</h2>
             <p>two letter culture: @twoLetterRequestCulture</p>
             <p>alternate two letter culture: @alternateTwoLetterRequestCulture</p>
@@ -132,6 +135,11 @@
                 window.location = toggle.getAttribute('href');
             });
         })();
+    </script>
+    <script>
+        function SetTitle(title) {
+            document.title = title;
+        }
     </script>
     <script src="_framework/blazor.server.js"></script>
 </body>
