@@ -58,26 +58,12 @@
         defTop.outerHTML = wet.builder.top({
             "appName": [{ "text": "@Localizer["Title"]", "href": "/@twoLetterRequestCulture/" }],
             "lngLinks": [{ "lang": "@alternateTwoLetterRequestCulture", "href": "@alternate", "text": "@toggle" }],
-            "menuLinks": [{
-                "href": "#",
-                "text": "Link 1"
-            },
-            {
-                "href": "#",
-                "text": "Link 2"
-            },
-            {
-               "href": "#",
-               "text": "Link 3"
-            }],
             "breadcrumbs": [{
                 "title": "Home",
-                "href": "https://www.canada.ca/en/index.html"
+                "href": "@($"https://www.canada.ca/{twoLetterRequestCulture}/index.html")"
             },
             {
-                "title": "CDTS",
-                "acronym": "Centrally Deployed Templates Solution",
-                "href": "https://www.canada.ca/en/index.html"
+                "title": "@Localizer["Title"]"                
             }]
         });
     </script>
@@ -94,6 +80,7 @@
             <p>alternate two letter culture: @alternateTwoLetterRequestCulture</p>
             <p>alternate link: @alternate</p>
             <p>toggle text: @toggle</p>
+            <p>breadcrumb: <span id="bread"></span></p>
         </div>
 
         <div id="def-preFooter">
@@ -139,6 +126,11 @@
     <script>
         function SetTitle(title) {
             document.title = title;
+        }
+    </script>
+    <script>
+        function SetBreadcrumb(value) {
+            document.getElementById("bread").textContent = value;
         }
     </script>
     <script src="_framework/blazor.server.js"></script>

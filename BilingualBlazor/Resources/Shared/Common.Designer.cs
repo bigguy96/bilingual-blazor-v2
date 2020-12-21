@@ -79,6 +79,24 @@ namespace BilingualBlazor.Resources.Shared {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://www.canada.ca/en/index.html.
+        /// </summary>
+        public static string HomeLink {
+            get {
+                return ResourceManager.GetString("HomeLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string HomeText {
+            get {
+                return ResourceManager.GetString("HomeText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Blazor English.
         /// </summary>
         public static string Title {
