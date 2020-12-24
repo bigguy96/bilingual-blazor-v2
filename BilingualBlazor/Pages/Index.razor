@@ -6,8 +6,8 @@
 @inject IStringLocalizer<Index> Localizer
 @inject NavigationManager NavigationManager
 
-<PageTitle Value="@Localizer["Hello"]" />
-<Breadcrumb Value="Breadcrumb" />
+<PageDetails Value="@Localizer["Hello"]" />
+
 <h1>@Localizer["Hello"]</h1>
 
 <p><button class="btn btn-primary" @onclick="NavigateToCounterComponent">User page</button></p>
@@ -24,7 +24,7 @@
 {
     private void NavigateToCounterComponent()
     {
-        NavigationManager.NavigateTo(Localizer["User"], forceLoad:true);
+        NavigationManager.NavigateTo(Localizer["User"], forceLoad: true);
     }
 
     private void NavigateToRequestComponent()

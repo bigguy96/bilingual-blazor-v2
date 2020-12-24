@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using BilingualBlazor.Utils;
 
 namespace BilingualBlazor
 {
@@ -26,6 +27,7 @@ namespace BilingualBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddSingleton<StateContainer>();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedUiCultures = new List<CultureInfo>()

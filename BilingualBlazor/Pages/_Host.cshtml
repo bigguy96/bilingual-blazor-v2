@@ -7,6 +7,7 @@
 @using Microsoft.Extensions.Localization
 
 @inject IStringLocalizer<Common> Localizer
+@inject StateContainer StateContainer
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -27,7 +28,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-    <title>Content page</title>
+    <title>@StateContainer.Title</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <!-- Meta data -->
     <meta name="description" content="@Localizer["Description"]">
@@ -63,7 +64,11 @@
                 "href": "@($"https://www.canada.ca/{twoLetterRequestCulture}/index.html")"
             },
             {
-                "title": "@Localizer["Title"]"                
+                "title": "@Localizer["Title"]",
+                "href": "/@twoLetterRequestCulture/"
+            },
+            {
+                "title": "@StateContainer.Title"
             }]
         });
     </script>
