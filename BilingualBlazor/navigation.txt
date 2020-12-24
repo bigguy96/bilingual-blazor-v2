@@ -13,3 +13,6 @@ https://stackoverflow.com/questions/59197729/dynamic-hosts-cshtml-file-in-blazor
 https://github.com/dotnet/aspnetcore/issues/16009
 https://stackoverflow.com/questions/60161726/find-the-blazor-component-class-corresponding-to-a-given-path
 https://stackoverflow.com/questions/62674998/in-blazor-how-to-retrieve-all-routable-razor-component-names-in-pages-directory
+
+AppState
+https://stackoverflow.com/questions/59197729/dynamic-hosts-cshtml-file-in-blazor-with-c-sharp-code
