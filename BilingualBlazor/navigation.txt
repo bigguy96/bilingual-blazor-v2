@@ -16,3 +16,4 @@ https://stackoverflow.com/questions/62674998/in-blazor-how-to-retrieve-all-routa
 
 AppState
 https://stackoverflow.com/questions/59197729/dynamic-hosts-cshtml-file-in-blazor-with-c-sharp-code
+https://docs.microsoft.com/en-us/aspnet/core/blazor/state-management?view=aspnetcore-5.0&pivots=webassembly#in-memory-state-container-service-wasm
