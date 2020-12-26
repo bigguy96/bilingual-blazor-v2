@@ -7,7 +7,6 @@
 @using Microsoft.Extensions.Localization
 
 @inject IStringLocalizer<Common> Localizer
-@inject StateContainer StateContainer
 
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
@@ -28,7 +27,7 @@
 <head>
     <meta charset="utf-8">
     <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-    <title>@StateContainer.Title</title>
+    @(await Html.RenderComponentAsync<HeadComponent>(RenderMode.Server))
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <!-- Meta data -->
     <meta name="description" content="@Localizer["Description"]">
@@ -68,7 +67,7 @@
                 "href": "/@twoLetterRequestCulture/"
             },
             {
-                "title": "@StateContainer.Title"
+                "title": "Title"
             }]
         });
     </script>
@@ -128,16 +127,7 @@
             });
         })();
     </script>
-    <script>
-        function SetTitle(title) {
-            document.title = title;
-        }
-    </script>
-    <script>
-        function SetBreadcrumb(value) {
-            document.getElementById("bread").textContent = value;
-        }
-    </script>
+    
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>

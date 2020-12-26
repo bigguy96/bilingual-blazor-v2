@@ -124,7 +124,7 @@
     <value>Allo le monde</value>
   </data>
   <data name="Request" xml:space="preserve">
-    <value>/fr/demnde</value>
+    <value>/fr/demande</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>/fr/usager/test</value>

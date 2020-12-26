@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
-using BilingualBlazor.Utils;
+using BilingualBlazor.State;
 
 namespace BilingualBlazor
 {
@@ -20,6 +20,7 @@ namespace BilingualBlazor
         }
 
         public IConfiguration Configuration { get; }
+        private static string _currentCulture = "en";
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -27,7 +28,7 @@ namespace BilingualBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<StateContainer>();
+            services.AddScoped<HeadState>();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedUiCultures = new List<CultureInfo>()
@@ -41,15 +42,14 @@ namespace BilingualBlazor
 
                 options.AddInitialRequestCultureProvider(new CustomRequestCultureProvider(async context =>
                 {
-                    var segments = context.Request.Path.Value.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-                    var currentCulture = "en";
+                    var segments = context.Request.Path.Value.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);                    
 
                     if (segments.Length >= 1 && segments[0].Length == 2)
                     {
-                        currentCulture = segments[0].Equals("en", StringComparison.OrdinalIgnoreCase) ? "en" : "fr";
+                        _currentCulture = segments[0].Equals("en", StringComparison.OrdinalIgnoreCase) ? "en" : "fr";
                     }
 
-                    var requestCulture = new ProviderCultureResult(currentCulture, currentCulture);
+                    var requestCulture = new ProviderCultureResult(_currentCulture, _currentCulture);
 
                     return await Task.FromResult(requestCulture);
                 }));

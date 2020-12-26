@@ -1,11 +1,13 @@
-﻿@inject IJSRuntime JSRuntime
+﻿@inject State.HeadState Head
 
 @code{
     [Parameter]
-    public string Value { get; set; }
+    public string Title { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnInitialized()
     {
-        await JSRuntime.InvokeVoidAsync("SetTitle", Value);
+        Head.SetTitle(Title);
+
+        //base.OnInitialized();
     }
 }

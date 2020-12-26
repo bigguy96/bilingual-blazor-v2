@@ -1,0 +1,14 @@
+﻿@inject State.HeadState Head
+
+<title>@Head.Title</title>
+
+@code
+{
+    protected override void OnInitialized()
+    {
+        Head.HeadChanged += () =>
+        {
+            StateHasChanged();
+        };
+    }
+}
