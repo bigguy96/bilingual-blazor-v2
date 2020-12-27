@@ -5,7 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\AppTop.cs" />
+    <Compile Remove="State\ApplicationState.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Shared\Breadcrumb.razor" />
+    <Content Remove="Shared\Top.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
   <ItemGroup>
