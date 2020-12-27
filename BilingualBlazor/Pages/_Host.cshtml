@@ -65,12 +65,10 @@
             {
                 "title": "@Localizer["Title"]",
                 "href": "/@twoLetterRequestCulture/"
-            },
-            {
-                "title": "Title"
             }]
         });
     </script>
+
     <main role="main" property="mainContentOfPage" class="container">
         <app>
             <component type="typeof(App)" render-mode="ServerPrerendered" />
@@ -84,7 +82,6 @@
             <p>alternate two letter culture: @alternateTwoLetterRequestCulture</p>
             <p>alternate link: @alternate</p>
             <p>toggle text: @toggle</p>
-            <p>breadcrumb: <span id="bread"></span></p>
         </div>
 
         <div id="def-preFooter">
@@ -127,7 +124,19 @@
             });
         })();
     </script>
-    
+
+    <script>
+        function SetBreadcrumb(value) {
+            console.log('DOM fully loaded and parsed');
+
+            const ol = document.getElementsByClassName("breadcrumb")[0];
+            let li = document.createElement('li');
+
+            li.appendChild(document.createTextNode(value));
+            ol.appendChild(li);
+        }
+    </script>
+
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>

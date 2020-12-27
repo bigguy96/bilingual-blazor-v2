@@ -29,6 +29,7 @@ namespace BilingualBlazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<HeadState>();
+            //services.AddScoped<ApplicationState>();
             services.Configure<RequestLocalizationOptions>(options =>
             {
                 var supportedUiCultures = new List<CultureInfo>()

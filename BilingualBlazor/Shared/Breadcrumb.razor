@@ -3,6 +3,10 @@
 @inject IStringLocalizer<Common> Localizer
 @using System.Text.Json
 
+@using Microsoft.AspNetCore.Html;
+
+@inject State.ApplicationState AppState
+
 @code{
     [Parameter]
     public string Value { get; set; }
@@ -16,6 +20,8 @@
             breadcrumbs = new List<Models.Breadcrumb> { new Models.Breadcrumb { href = "/test", title = "Test" } }
         };
 
+        var b = new Models.Breadcrumb { href = "/test", title=Value };
+
         var serializeOptions = new JsonSerializerOptions
         {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -25,7 +31,9 @@
         };
 
         var jsonString = JsonSerializer.Serialize(appTop, serializeOptions);
-        var a = "";
 
+        var html = new HtmlString(jsonString);
+
+        AppState.SetTop(html);
     }
 }

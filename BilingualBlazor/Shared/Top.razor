@@ -1,0 +1,16 @@
+﻿@inject State.ApplicationState AppState
+
+<div>
+    @AppState.AppTop
+</div>
+
+@code
+{
+    protected override void OnInitialized()
+    {
+        AppState.AppTopChanged += () =>
+        {
+            StateHasChanged();
+        };
+    }
+}

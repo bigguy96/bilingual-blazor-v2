@@ -1,0 +1,22 @@
+﻿@inject IJSRuntime JSRuntime
+@inject IStringLocalizer<Common> Localizer
+@using System.Text.Json
+
+@code{
+    [Parameter]
+    public string Value { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        //var list = new[]
+        //{
+        //    new { title = Localizer["HomeText"].Value, href = Localizer["HomeLink"].Value },
+        //    new { title = Localizer["Title"].Value, href = Localizer["Home"].Value },
+        //    new { title = Value, href ="#"}
+        //}.ToList();
+
+        //var jsonString = JsonSerializer.Serialize(list);
+
+        await JSRuntime.InvokeVoidAsync("SetBreadcrumb", Value);
+    }
+}
