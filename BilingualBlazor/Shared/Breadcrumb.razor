@@ -1,4 +1,5 @@
-﻿@inject IJSRuntime JSRuntime
+﻿@using Models
+@inject IJSRuntime JSRuntime
 @inject IStringLocalizer<Common> Localizer
 @using System.Text.Json
 
@@ -6,17 +7,25 @@
     [Parameter]
     public string Value { get; set; }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
+    protected override void OnAfterRender(bool firstRender)
     {
-        var list = new[]
+        var appTop = new AppTop
         {
-            new { title = Localizer["HomeText"].Value, href = Localizer["HomeLink"].Value },
-            new { title = Localizer["Title"].Value, href = Localizer["Home"].Value },
-            new { title = Value, href ="#"}
-        }.ToList();
+            appName = new List<AppName> { new AppName { text = Localizer["Title"] } },
+            lngLinks = new List<Lnglink> { new Lnglink { href = "/test" } },
+            breadcrumbs = new List<Models.Breadcrumb> { new Models.Breadcrumb { href = "/test", title = "Test" } }
+        };
 
-        var jsonString = JsonSerializer.Serialize(list);
+        var serializeOptions = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = true,
+            IgnoreNullValues = true,
+            PropertyNameCaseInsensitive = true,
+        };
 
-        await JSRuntime.InvokeVoidAsync("SetBreadcrumb", jsonString);
+        var jsonString = JsonSerializer.Serialize(appTop, serializeOptions);
+        var a = "";
+
     }
 }
