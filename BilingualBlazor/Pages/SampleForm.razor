@@ -5,6 +5,7 @@
 @inherits BasePageComponent
 
 <PageTitle Title="Sample Form" />
+<Breadcrumbs Value="Sample Form" />
 <h1>Sample Form</h1>
 
 @if (LastSubmitResult != null)
@@ -15,7 +16,7 @@
     <hr />
 }
 
-<EditForm Model=@Person OnSubmit="FormSubmitted" >
+<EditForm Model=@Person OnSubmit="FormSubmitted">
     <DataAnnotationsValidator />
     <ValidationSummary />
 

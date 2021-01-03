@@ -7,18 +7,20 @@
 @inject NavigationManager NavigationManager
 
 <PageTitle Title="@Localizer["Hello"]" />
-<Breadcrumbs2 Value="@Localizer["Hello"]" />
+<Breadcrumbs Value="@Localizer["Hello"]" />
 
 <h1>@Localizer["Hello"]</h1>
 
 <p><button class="btn btn-primary" @onclick="NavigateToCounterComponent">User page</button></p>
 <p><button class="btn btn-primary" @onclick="NavigateToRequestComponent">Request page</button></p>
 <p><button class="btn btn-primary" @onclick="NavigateToDownloadComponent">Download page</button></p>
+<p><button class="btn btn-primary" @onclick="NavigateToFormComponent">Form page</button></p>
 
 <ul>
     <li><a href="@Localizer["User"]">User Page</a></li>
     <li><a href="@Localizer["Request"]">Request Page</a></li>
     <li><a href="@Localizer["Download"]">Download Page</a></li>
+    <li><a href="@Localizer["Form"]">Form Page</a></li>
 </ul>
 
 @code
@@ -36,5 +38,10 @@
     private void NavigateToDownloadComponent()
     {
         NavigationManager.NavigateTo(Localizer["Download"], forceLoad: true);
+    }
+
+    private void NavigateToFormComponent()
+    {
+        NavigationManager.NavigateTo(Localizer["Form"], forceLoad: true);
     }
 }

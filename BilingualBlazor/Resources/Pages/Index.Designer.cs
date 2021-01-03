@@ -70,6 +70,15 @@ namespace BilingualBlazor.Resources.Pages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to /en/form.
+        /// </summary>
+        public static string Form {
+            get {
+                return ResourceManager.GetString("Form", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello World.
         /// </summary>
         public static string Hello {

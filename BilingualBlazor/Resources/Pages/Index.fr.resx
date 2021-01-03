@@ -120,6 +120,9 @@
   <data name="Download" xml:space="preserve">
     <value>/fr/telechargement</value>
   </data>
+  <data name="Form" xml:space="preserve">
+    <value>/fr/formulaire</value>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>Allo le monde</value>
   </data>
