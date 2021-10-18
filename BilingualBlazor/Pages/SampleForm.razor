@@ -8,10 +8,10 @@
 <Breadcrumbs Value="Sample Form" />
 <h1>Sample Form</h1>
 
-@if (LastSubmitResult != null)
+@if (_lastSubmitResult != null)
 {
     <h2>
-        Last submit status: @LastSubmitResult
+        Last submit status: @_lastSubmitResult
     </h2>
     <hr />
 }
@@ -67,11 +67,11 @@
 @code
 {
     Person Person = new Person();
-    string LastSubmitResult;
+    string _lastSubmitResult;
 
     void FormSubmitted(EditContext editContext)
     {
-        bool formIsValid = editContext.Validate();
-        LastSubmitResult = formIsValid ? "Success - form was valid" : "Failure - form was invalid";
+        var formIsValid = editContext.Validate();
+        _lastSubmitResult = formIsValid ? "Success - form was valid" : "Failure - form was invalid";
     }
 }

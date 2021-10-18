@@ -6,9 +6,6 @@
 {
     protected override void OnInitialized()
     {
-        Head.HeadChanged += () =>
-        {
-            StateHasChanged();
-        };
+        Head.HeadChanged += StateHasChanged;
     }
 }

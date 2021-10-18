@@ -130,7 +130,7 @@
             console.log('DOM fully loaded and parsed');
 
             const ol = document.getElementsByClassName("breadcrumb")[0];
-            let li = document.createElement('li');
+            const li = document.createElement('li');
 
             li.appendChild(document.createTextNode(value));
             ol.appendChild(li);
